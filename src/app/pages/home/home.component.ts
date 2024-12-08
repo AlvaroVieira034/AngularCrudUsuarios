@@ -20,8 +20,19 @@ export class HomeComponent implements OnInit {
     this.serviceUsuario.GetUsuarios().subscribe(response => {
         this.usuarios = response.dados;
         this.usuariosGeral = response.dados;
-        console.log(response);
+        //console.log(response);
     })
+  }
+
+
+  search(event: Event){
+    const target = event.target as HTMLInputElement;
+    const value = target.value.toLowerCase();
+
+    this.usuarios = this.usuariosGeral.filter(usuario => {
+      return usuario.nomeCompleto.toLowerCase().includes(value);
+    })
+
   }
 
 }

@@ -3,11 +3,11 @@
     <button class="btn btn-success w-100">Cadastrar novo Usuário</button>
     <div>
         <label class="form-label">Pesquisar:</label>
-        <input class="form-control" type="text" placeholder="Qual usuarios deseja pesquisar?"/>
+        <input class="form-control" type="text" placeholder="Qual usuario deseja pesquisar?" (input)="search($event)"/>
     </div>
 
     <table class="table table-hover table-border mt-5">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Id</th>
                 <th>Nome Completo</th>
@@ -29,17 +29,15 @@
                         <td>{{usuario.email}}</td>
                         <td>{{usuario.cargo}}</td>
                         <td>{{usuario.salario}}</td>
-                        <td>{{usuario.situacao}}</td>
-
+                        <td>{{usuario.situacao == true ?"Ativo":"Inativo"}}</td>
+                        <td>
+                            <button class="btn btn-warning mx-2">Editar</button>
+                            <button class="btn btn-info mx-2">Detalhes</button>
+                            <button class="btn btn-danger mx-2">Excluir</button>
+                        </td>
                     </tr>
                 }
-
             }
-
-
-
         </tbody>
-
-
     </table>
 </div>

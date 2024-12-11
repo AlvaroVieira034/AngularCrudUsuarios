@@ -1,20 +1,20 @@
 
 <div class="container mt-5">
-    <button class="btn btn-success w-100">Cadastrar novo Usuário</button>
+    <button class="btn btn-success w-100" [routerLink]="['/cadastro']" routerLinkActive="router-link-active" >Cadastrar novo Usuário</button>
     <div>
         <label class="form-label">Pesquisar:</label>
         <input class="form-control" type="text" placeholder="Qual usuario deseja pesquisar?" (input)="search($event)"/>
     </div>
 
-    <table class="table table-hover table-border mt-5">
+    <table class="table table-hover table-border mt-4">
         <thead class="table-dark">
             <tr>
                 <th>Id</th>
                 <th>Nome Completo</th>
                 <th>Email</th>
                 <th>Cargo</th>
-                <th>Salário</th>
-                <th>Situação</th>
+                <th class="text-end">Salário</th>
+                <th class="text-center">Situação</th>
                 <th></th>
             </tr>
         </thead>
@@ -28,16 +28,21 @@
                         <td>{{usuario.nomeCompleto}}</td>
                         <td>{{usuario.email}}</td>
                         <td>{{usuario.cargo}}</td>
-                        <td>{{usuario.salario}}</td>
-                        <td>{{usuario.situacao == true ?"Ativo":"Inativo"}}</td>
+                        <td class="text-end">{{usuario.salario.toFixed(2)}}</td>
+                        <td class="text-center">{{usuario.situacao == true ?"Ativo":"Inativo"}}</td>
                         <td>
                             <button class="btn btn-warning mx-2">Editar</button>
                             <button class="btn btn-info mx-2">Detalhes</button>
-                            <button class="btn btn-danger mx-2">Excluir</button>
+                            <button class="btn btn-danger mx-2" (click)="deletar(usuario.id)" >Excluir</button>
                         </td>
                     </tr>
                 }
+            }@else {
+                <tr class="text-center">
+                    <td colspan="7"> Nenhum usuário cadastrado</td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
+

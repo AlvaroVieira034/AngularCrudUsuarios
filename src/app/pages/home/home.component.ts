@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { UsuarioListar } from '../../Models/Usuarios';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -33,6 +34,12 @@ export class HomeComponent implements OnInit {
       return usuario.nomeCompleto.toLowerCase().includes(value);
     })
 
+  }
+
+  deletar(id:number | undefined){
+    this.serviceUsuario.DeletarUsuario(id).subscribe(response => {
+      window.location.reload()
+    })
   }
 
 }

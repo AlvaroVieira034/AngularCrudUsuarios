@@ -29,6 +29,16 @@ export class UsuarioService {
     
   }
 
+  GetUsuarioId(id: number): Observable<ApiResponse<UsuarioListar>>{
+    return this.http.get<ApiResponse<UsuarioListar>>(`${this.ApiUrl}/${id}`);
+
+  }
+
+  EditarUsuario(usuario: UsuarioListar): Observable<ApiResponse<UsuarioListar[]>>{
+    return this.http.put<ApiResponse<UsuarioListar[]>>(this.ApiUrl, usuario);
+
+  }
+
 }
 
 
